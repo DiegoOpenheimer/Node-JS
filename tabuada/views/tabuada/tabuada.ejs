@@ -1,0 +1,43 @@
+<% include ../partials/header.ejs %>
+
+ <div class="container" style="position: relative; top: 100px">
+    <div class="titulo text-center">
+         <h1>Tabuada do número <%= num %></h1>
+    </div>
+    <div class=" row text-center">
+     <div class="col-md-3">
+        <ul class="list-group">
+            <% valores0a25.map(valor => { %>
+                <li class="list-group-item list-group-item-action"><%= valor.num %> x <%= valor.i %> = <%= valor.resultado%></li>
+            <%})%>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="list-group">
+            <% valores26a50.map(valor => { %>
+                <li class="list-group-item list-group-item-action"><%= valor.num %> x <%= valor.i %> = <%= valor.resultado%></li>
+            <%})%>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="list-group">
+            <% valores51a75.map(valor => { %>
+                <li class="list-group-item list-group-item-action"><%= valor.num %> x <%= valor.i %> = <%= valor.resultado%></li>
+            <%})%>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="list-group">
+             <% valores76a100.map(valor => { %>
+                <li class="list-group-item list-group-item-action"><%= valor.num %> x <%= valor.i %> = <%= valor.resultado%></li>
+            <%})%>
+        </ul>
+      </div>
+    </div>
+    
+    
+ </div><!-- /.container -->
+
+
+<% include ../partials/footer.ejs %>
+

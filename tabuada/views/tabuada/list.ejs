@@ -1,0 +1,44 @@
+<% include ../partials/header.ejs %>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Escolha seu número</h1>
+        <p class="lead">Gere uma tabuada de um número de 1 a 100.</p>
+      </div>
+    </div><!-- /.container -->
+<section class="container">
+<div class="row">
+    <div class="col-md-3">
+        <ul class="list-group">
+        <% valores0a25.map(valor => { %>
+            <li style="list-style-type: none"><a class="list-group-item list-group-item-action" href="/tabuada/do/<%= valor %>">Tabuada do <%= valor %></a></li>
+       <% }) %>
+       </ul>
+    </div>
+    <div class="col-md-3">
+        <ul class="list-group">
+        <% valores26a50.map(valor => { %>
+            <li style="list-style-type: none"><a class="list-group-item list-group-item-action" href="/tabuada/do/<%= valor %>">Tabuada do <%= valor %></a></li>
+       <% }) %>
+       </ul>
+    </div>
+    <div class="col-md-3">
+        <ul class="list-group">
+        <% valores51a75.map(valor => { %>
+            <li style="list-style-type: none"><a class="list-group-item list-group-item-action" href="/tabuada/do/<%= valor %>">Tabuada do <%= valor %></a></li>
+       <% }) %>
+       </ul>
+    </div>
+      <div class="col-md-3">
+        <ul class="list-group">
+        <% valores76a100.map(valor => { %>
+            <li style="list-style-type: none"><a class="list-group-item list-group-item-action" href="/tabuada/do/<%= valor %>">Tabuada do <%= valor %></a></li>
+       <% }) %>
+       </ul>
+    </div>
+</div>
+</section>
+
+<% include ../partials/footer.ejs %>
+
