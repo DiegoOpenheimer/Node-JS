@@ -3,7 +3,7 @@
     <div class="container">
     <h1 class="text-center">Pessoas cadastradas</h1>
     <a class="btn btn-primary float-right" href="/pessoas/create">Cadastras pessoas</a>
-   
+  
    <table class="table table-striped table-bordered ">
     <thead class="thead-inverse">
         <tr>
@@ -16,12 +16,11 @@
             <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal-<%= content.id %>">
                     Editar
                     </button>
-
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal-<%= content.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">
@@ -31,10 +30,10 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="post">
+                                    <form method="post" action="/pessoas/edit/<%= content.id %>">
                                        <div class="form-group">
                                             <label for="idNome">Nome</label>
-                                            <input class="form-control" name="nome" maxlength="30" id="idNome" type="text"/>
+                                            <input class="form-control" name="nome" maxlength="30" id="idNome" type="text" value="<%= content.nome %>"/>
                                        </div> 
                                       
                                       <div class="form-group">
@@ -49,9 +48,8 @@
                                      
                                      <div class="form-group">
                                             <label for="idPessoa">ID Pessoa</label>
-                                            <input readOnly class="form-control" name="id" value="<%=content.id %>" id="idCargo" type="text"/>
+                                            <input readOnly class="form-control" name="id" value="<%=content.id %>" id="idPessoa" type="text"/>
                                      </div>
-
                                         <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save changes</button>
@@ -70,7 +68,5 @@
     </tbody>
    
     </table>
-
     </div>
-
 <% include ../partials/footer %>

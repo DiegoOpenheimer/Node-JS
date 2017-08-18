@@ -37,9 +37,22 @@ const addPessoa = (connection, data) => {
 
 }
 
+const editPerson = (connection, data) => {
+    return new Promise((resolve, reject) => {
+        connection.query(`update pessoas set nome = '${data.nome}',
+        nascimento = '${data.nascimento}', cargo = '${data.cargo}' where id = '${data.id}'`,(err) => {
+            if(err){
+                reject(err)
+            }else{
+                resolve()
+            }
+        })
+    })
+}
+
 
 
 
 module.exports = {
-    findAll, deleteOne, addPessoa
+    findAll, deleteOne, addPessoa, editPerson
 }
