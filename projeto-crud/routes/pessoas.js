@@ -8,6 +8,7 @@ const pessoasRouter = ({ connection }) => {
     router.get('/delete/:id', pessoasController.deleteRoute.bind(null, connection))
     router.get('/create', pessoasController.create)
     router.post('/create', pessoasController.add.bind(null, connection))
+    router.post('/', (req, res) => res.send(req.body))
     return router
 }
 
