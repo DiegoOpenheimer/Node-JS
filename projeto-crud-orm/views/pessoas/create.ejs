@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+
+    <div class="container">
+        <div class="novas-pessoas">
+            <h1 style="float: left">Cadastrar Pessoas</h1><a class="btn btn-outline-dark float-right" href="/pessoas">Voltar para pessoas</a>
+        </div>
+    <form class="myForm" method="post">
+        <div class="form-group margin-top">
+            <label for="idNome">Nome:</label>
+            <input class="form-control" id="idNome" name="nome" type="text" placeholder="Informe nome" maxlength="20" required/>
+        </div>
+       
+        <div class="form-group">
+            <label for="idNascimento">Data de nascimento</label>
+            <input class="form-control" name="nascimento" maxlength="10" id="idNascimento"placeholder="YYYY/MM/DD" type="text"/>
+        </div>
+        
+        <div class="form-group margin-top">
+            <label for="idCargo">Cargo:</label>
+            <input class="form-control" id="idCargo" name="cargo" type="text" placeholder="Informe cargo" maxlength="15" required/>
+        </div>
+        
+    <button type="submit"class="btn btn-primary" >Cadastrar</button>
+
+    </form>
+    </div>
+
+
+
+
+<% include ../partials/footer %>
