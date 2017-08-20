@@ -7,7 +7,7 @@ const bodyParser = require('body-parser')
 //routes
 const indexRoutes = require('./routes/index')
 const createRoutes = require('./routes/create')
-
+const visualizacaoRoutes = require('./routes/visualizacao')
 //settind body-parser
 app.use(bodyParser.urlencoded({extended: true}))
 
@@ -19,13 +19,16 @@ app.use(express.static('public'))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
+
+//setting routes
 app.use('/', indexRoutes)
 app.use('/create', createRoutes)
+app.use('/visualizacao', visualizacaoRoutes)
 
 
 model.sequelize.sync().then(() => {
     app.listen(port, () => console.log('Server running on port ' + port))
     console.log('synced')
-}).catch(() => {
-    console.log('Não foi possível sincronizar ao banco de dados')
+}).catch(( err ) => {
+    console.log('Não foi possível sincronizar ao banco de dados, ERROR ' + err )
 })

@@ -1,0 +1,78 @@
+<style>
+    .link{
+        padding: 5px;
+        margin: 5px 5px;
+        color: blue;
+        text-decoration: none;
+    }
+    .link:hover{
+        background: green;
+        color: white;
+        border-radius: 5px;
+        transition: all 0.3s;
+    }
+    table{
+        width: 100%;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+</style>
+
+
+
+   <table border="1"style="border-spacing: 0;margin-bottom: 10px">
+            <thead>
+              <tr><th>Professor</th><th>Disciplina</th>
+                  <th>Nota 1</th>
+                  <th>Nota 2</th>
+                  <th>Nota 3</th>
+                  <th>total</th>
+              </tr>
+             </thead>
+           <tbody>
+           <% const vetorResultado = Array() %>
+            <% result.map(content => { %>
+              <tr>
+                <td>
+                  <%= content.professor %>
+                </td>
+                <td>
+                  <%= content.disciplina %>
+                </td>
+                <td>
+                  <%= content.nota1 %>
+                </td><td>
+                  <%= content.nota2 %>
+                </td><td>
+                  <%= content.nota3 %>
+                </td>
+                <td>
+                  <% vetorResultado.push(content.nota3 + content.nota2 + content.nota1) %>
+                  <%= content.nota3 + content.nota2 + content.nota1 %>
+               
+                </td>
+              </tr>
+
+
+           <% }) %>
+           <tr>
+            <td>Media</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+                  
+            <td>
+                <% const media =  vetorResultado.reduce((ant, prox) => ant + prox) %>
+                <%= (media/vetorResultado.length).toFixed(2)  %>
+            </td>
+           </tr>
+          
+                  
+           </tbody>
+      </table>
+
+ <a href="/" class="link" >Voltar</a>     
