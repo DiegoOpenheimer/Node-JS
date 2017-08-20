@@ -1,0 +1,107 @@
+<% include partials/header %>
+<% include partials/titles %>
+	
+  <!-- Button trigger modal -->
+<button style="margin-left: 10px;margin-bottom: 5px" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Adicionar Nota  
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Adicionar Nota</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post">
+            <div class="form-group">
+              <label for="idDisciplina">Disciplina</label>
+              <select name="id"class="form-control">
+                
+                <% result.map(content => { %>
+                  <option value="<%=content.id %>"><%= content.disciplina %>
+                  </option>
+               <% }) %>
+              </select>
+            </div>
+           <select class="form-control"name="nota">
+              <% for(let i = 1; i <=3; i++) { %>
+                <option value="nota-<%=i%>">Nota<%=i%></option>
+              <% } %>
+           </select>      
+           <div class="form-group">
+            <label for="idNota">Nota</label>
+            <input name="valor"class="form-control"type="number" max="40" value="0"/>
+           </div>           
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>  
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+   <a href="/create" style="margin-right: 10px"class="pull-right">Cadastrar Disciplina</a>
+         <table class="table">
+            <thead>
+              <tr><th>Professor</th><th>Disciplina</th>
+                  <th>Nota 1</th>
+                  <th>Nota 2</th>
+                  <th>Nota 3</th>
+                  <th>total</th>
+              </tr>
+             </thead>
+           <tbody>
+           <% const vetorResultado = Array() %>
+            <% result.map(content => { %>
+              <tr>
+                <td>
+                  <%= content.professor %>
+                </td>
+                <td>
+                  <%= content.disciplina %>
+                </td>
+                <td>
+                  <%= content.nota1 %>
+                </td><td>
+                  <%= content.nota2 %>
+                </td><td>
+                  <%= content.nota3 %>
+                </td>
+                <td>
+                  <% vetorResultado.push(content.nota3 + content.nota2 + content.nota1) %>
+                  <%= content.nota3 + content.nota2 + content.nota1 %>
+               
+                </td>
+              </tr>
+
+
+           <% }) %>
+           <tr>
+            <td>Media</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+                  
+            <td>
+                <% const media =  vetorResultado.reduce((ant, prox) => ant + prox) %>
+                <%= (media/vetorResultado.length).toFixed(2)  %>
+            </td>
+           </tr>
+          
+                  
+           </tbody>
+                  </table>
+
+
+                
+                     
+<%  include partials/footer %>                    

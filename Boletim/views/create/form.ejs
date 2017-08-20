@@ -1,0 +1,18 @@
+<% include ../partials/header %>
+<% include ../partials/titles %>
+    <a style="margin-right: 15px" class="btn pull-right" href="/">Voltar</a>
+    <form style="margin-left: 10px" method="post">
+        <div class="form-group">
+            <label for="idProfessor">Nome do Professor</label>
+            <input class="form-control"required id="idProfessor" name="professor" type="text" maxlength="30" placeholder="Informe nome do professor"/>
+        </div>
+    
+        <div class="form-group">
+            <label for="idMateria">Disciplina</label>
+            <input class="form-control" required id="idMateria" name="disciplina" type="text" maxlength="30" placeholder="Informe nome da disciplina"/>
+        </div>
+    
+    <button class="load-more-button" type="submit">Cadastrar</button>
+    </form>
+
+<% include ../partials/footer %>
