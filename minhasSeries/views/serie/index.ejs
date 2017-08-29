@@ -1,0 +1,82 @@
+<% include ../partials/header %>
+
+<section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-ms-12 mx-auto">
+            <h2>Séries</h2>
+            <p class="lead float-left">Todas as séries cadastradas</p>
+            <a class="btn btn-primary float-right" href="series/nova">Nova Série</a>
+            <table class="table table-sm table-hover">
+              <thead>
+                <tr>
+                  <th>Série</th><th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% series.forEach(content => { %>
+                  <tr>
+                    <td><%= content.name %></td>
+                   
+                    <% label.forEach(item =>{ %>
+                      <% if(content.status === item.id) { %>
+                      <td><span class="badge badge-<% if(item.id === 'to-watch'){%>info<%} else if(item.id == 'watching'){%>warning<%} else {%>success<%} %>"><%= item.name %><span></span></td>
+                      <% } %>
+                   <% }) %>
+                    <td><a onclick="return confirm('Deseja realmente excluir? ')" class="btn btn-danger" href="series/delete/<%= content._id%>">Excluir</a></td>
+                    <td><!-- Button trigger modal -->
+                          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal<%= content._id %>">
+                            Editar
+                          </button>
+
+                          <!-- Modal -->
+                          <div class="modal fade" id="myModal<%= content._id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title mx-auto" id="exampleModalLabel">Editar</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <form method="post" action="series/edit/<%= content._id %>">
+                                    <div class="group-form">
+                                      <label for="idNome">Nome: </label>
+                                      <input required class="form-control"id="idNome"name="name"type="text" maxlenght="50" value="<%= content.name %>"/>
+                                    </div>
+
+                                    <div class="group-form">
+                                        <label for="idNome">Nome: </label>
+                                        <select name="status" class="form-control">
+                                        <% label.forEach(item => { %>
+                                          <option <% if(item.id == content.status){%>selected<%}%> value="<%=item.id%>"><%=item.name%></option>
+                                       <% }) %>
+                                          
+                                        </select>
+                                    </div>
+                                     <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                      </div>    
+                                  </form>
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
+                    </td>
+                    <!-- Button trigger modal -->
+                        
+                       
+                  </tr>
+                <%})%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+</section>
+
+
+<% include ../partials/footer %>

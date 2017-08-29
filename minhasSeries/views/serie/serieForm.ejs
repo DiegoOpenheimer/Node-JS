@@ -1,0 +1,29 @@
+<% include ../partials/header %>
+
+<section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Cadastro</h2>
+            <p class="lead">Cadastrar nova série</p>
+           <form method="post">
+             <div class="form-group">
+                <label for="nomeSerie">Nome: </label>
+                <input   required autofocus name="name" type="text" class="form-control" id="nomeSerie" aria-describedby="textHelp" placeholder="Informe nome da série">
+                <small id="textHelp" class="form-text text-muted">Série a ser cadastrada.</small>
+           </div>
+            <div class="form-group">
+                <select class="form-control" name="status">
+                    <option value="to-watch"selected>Para Assistir</option>
+                    <option value="watching">Assistindo</option>
+                    <option value="watched">Assistido</option>
+                </select>
+            </div>
+            <input type="submit" class="btn btn-info" value="Salvar"/>
+           </form>
+          </div>
+        </div>
+      </div>
+</section>
+
+<% include ../partials/footer %>

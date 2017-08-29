@@ -1,0 +1,30 @@
+body, html {
+    overflow-x: hidden;
+}
+
+@media screen and (max-width: 540px) {
+    .logo {
+        width: 320px;
+    }
+}
+
+@media screen and(max-width: 400px) {
+    .logo {
+        width: 100%;
+    }
+}
+
+.rodape {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    max-width: 200px;
+    margin: auto;
+}
+
+.rodape:hover {
+    text-decoration: none;
+
+}
