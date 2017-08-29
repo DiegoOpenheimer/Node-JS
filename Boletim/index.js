@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const indexRoutes = require('./routes/index')
 const createRoutes = require('./routes/create')
 const visualizacaoRoutes = require('./routes/visualizacao')
+
 //settind body-parser
 app.use(bodyParser.urlencoded({extended: true}))
 
