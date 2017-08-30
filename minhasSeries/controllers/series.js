@@ -39,11 +39,38 @@ const editSerie = ({ serie },req, res) => {
     serie.update({ _id: req.params.id }, req.body, (e) => res.redirect('/series'))
 }
 
+const infoOne = async ({ serie }, req, res) => {
+   try {
+    const doc = await serie.findOne({ _id: req.params.id })
+    res.render('serie/info', { serie: doc })
+   } catch (error) {
+       res.send(`<h1>Error ${error.toString()}</h1>`)
+   }
+    
+}
+
+const addComments = async ({ serie }, req, res) => {
+    await serie.updateOne({ _id: req.params.id }, {$push : { comments: req.body.comentario }}) 
+       res.redirect('/series/info/'+ req.params.id)
+    
+    //serie.updateOne({ _id: req.params.id }, {$push:{comments: req.body.comentario}}, (err) => res.redirect('/series/info/'+ req.params.id))
+}
+
+const deleteComments = async ({ serie }, req, res) => {
+    const doc = await serie.findOne({ _id: req.params.id })
+    doc.comments.splice(req.params.index, 1)
+   
+    await serie.updateOne({ _id: req.params.id }, doc)
+    res.redirect('/series/info/'+ req.params.id)
+}
 
 module.exports = {
     serieIndex,
     serieForm,
     salvarSerie,
     deleteSerie,
-    editSerie
+    editSerie,
+    infoOne,
+    addComments,
+    deleteComments
 }

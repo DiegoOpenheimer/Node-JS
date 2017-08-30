@@ -16,7 +16,7 @@
               <tbody>
                 <% series.forEach(content => { %>
                   <tr>
-                    <td><%= content.name %></td>
+                    <td><a class="btn btn-outline-info" href="series/info/<%=content._id%>"><%= content.name %></a></td>
                    
                     <% label.forEach(item =>{ %>
                       <% if(content.status === item.id) { %>
