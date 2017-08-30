@@ -36,7 +36,7 @@
                 <div class="col-sm-12 col-md-12 mySettings">
                     <h5><%= content%></h5>
                     <form class="myForm" method="post" action="/series/info/<%=serie._id%>/<%=index%>">
-                        <button class="btn-sm btn-outline-danger" type="submit">Excluir</button>
+                        <button onclick="return confirm('Deseja realmente excluir? ')"class="btn-sm btn-outline-danger" type="submit">Excluir</button>
                     </form>
                 </div>
             <% }) %>
