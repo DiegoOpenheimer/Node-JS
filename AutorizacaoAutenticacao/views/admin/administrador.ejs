@@ -1,0 +1,13 @@
+<% include ../partials/header %>
+
+      <div class="starter-template">
+        <h1>Controle Admin</h1>
+        <% noticias.forEach(content => { %>
+             <p class="lead"><%= content.title%> - <%= content.content%> - <%= content.category%> 
+             <a class="btn btn-primary" href="/edit/<%= content._id %>">Editar</a>
+             <a class="btn btn-danger" onclick="return confirm('Certeza disso? ')" href="/delete/<%=content._id%>">Excluir</a>
+             </p>
+       <% }) %>
+      </div>
+
+<% include ../partials/footer %>
