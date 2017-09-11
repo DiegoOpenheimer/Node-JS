@@ -15,6 +15,7 @@ const logout = require('./routes/logout')
 const admin = require('./routes/admin')
 const deleteNotice = require('./routes/delete')
 const edit = require('./routes/edit')
+const pages = require('./routes/pages')
 
 //setting express to get request post
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -37,20 +38,17 @@ app.use((req, res, next) => {
     next()
 })
 
-app.get('/', (req, res) => {
-    res.render('index')
-})
-
-
 
 //setting routes
 app.use('/noticias', noticias)
 app.use('/restrito', restrito)
-app.use('/login', login)
+app.use('/', login) //feita a autenticação
 app.use('/logout', logout)
 app.use('/admin', admin)
 app.use('/delete', deleteNotice)
 app.use('/edit', edit)
+app.use('/', pages)
+
 
 const checkUser = async user => {
     const total = await user.count()

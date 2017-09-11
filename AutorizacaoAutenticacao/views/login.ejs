@@ -15,13 +15,9 @@
             <input maxlength="10" name="password" type="password" id="inputPassword" class="form-control" placeholder="Informe senha" required>
           </div>
         <div class="checkbox">
-         <% if('errorUsuario' in locals) { %>
+         <% if('error' in locals) { %>
           <div class="alert alert-danger" role="alert">
-                Usuário inexistente
-          </div>
-         <%}else if ('errorSenha' in locals){ %>
-          <div class="alert alert-danger" role="alert">
-             Senha inválida
+                Usuário inexistente ou Senha inválida
           </div>
          <%}%>
         </div>

@@ -54,7 +54,7 @@
             <% if(locals.user.roles.length > 1) { %>
              <% locals.user.roles.forEach(role => { %>
              
-                 <a class="dropdown-item" href="/login/change-role/<%= role %>"><%=role%></a>
+                 <a class="dropdown-item" href="/change-role/<%= role %>"><%=role%></a>
               <%})%>
              <%}%>
               <a class="dropdown-item" href="/logout">Sair</a>
@@ -63,7 +63,7 @@
           </li>
           <%} else {%>
             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Entrar</a>
+            <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Entrar</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item" href="/login">Sign in</a>
      

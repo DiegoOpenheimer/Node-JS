@@ -1,12 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
-
 router.get('/', (req, res) => {
-    if ('user' in req.session) {
-        req.session.destroy()
-    }
-    res.redirect('/login')
+    res.render('index')
 })
 
 module.exports = router

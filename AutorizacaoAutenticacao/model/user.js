@@ -33,11 +33,11 @@ userSchema.pre('save', function(next) {
 
 userSchema.methods.checkPassword = function(password) {
     return new Promise((resolve, reject) => {
-        bcrypt.compare(password, this.password, (err, same) => {
+        bcrypt.compare(password, this.password, (err, isSame) => {
             if (err) {
                 reject(err)
             } else {
-                resolve(same)
+                resolve(isSame)
             }
         })
     })
