@@ -3,6 +3,7 @@ const router = express.Router()
 const User = require('../model/user')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 
 router.use(passport.initialize())
 router.use(passport.session())
@@ -30,6 +31,25 @@ passport.use(new LocalStrategy(async(username, password, done) => {
     }
 }))
 
+passport.use(new GoogleStrategy({
+    clientID: '680331637887-f83lcq8pcpfijo6042pgb64gkpdghqtn.apps.googleusercontent.com',
+    clientSecret: 'e5Fz6x2nYBz84dutTa4xaEG7',
+    callbackURL: 'http://localhost:3000/google/callback'
+}, async(accessToken, refreshToken, profile, done) => {
+    const userDB = await User.findOne({ googleID: profile.id })
+    if (!userDB) {
+        const user = new User({
+            name: profile.displayName,
+            googleID: profile.id,
+            roles: ['restrito']
+        })
+        await user.save()
+        return done(null, user)
+    } else {
+        return done(null, userDB)
+    }
+}))
+
 router.use((req, res, next) => {
     if (req.query.fail) {
         res.locals.error = req.query.fail
@@ -54,6 +74,12 @@ router.post('/login', passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login?fail=true',
     failureFlash: false
+}))
+
+router.get('/google', passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/userinfo.profile'] }))
+router.get('/google/callback', passport.authenticate('google', {
+    failureRedirect: '/login',
+    successRedirect: '/'
 }))
 
 router.get('/change-role/:role', (req, res) => {
