@@ -1,0 +1,55 @@
+<% include ../elements/header %>
+
+    <div class="container">
+        <h2>Verificando distância</h2>
+        <p><a href="/restaurants">Lista de restaurantes</a></p>
+
+        
+        <div id="map" style="height: 400px"></div>
+  
+      <table class="table mx-auto">
+    <thead>
+        
+        <th>
+            Nome:    
+        </th>
+
+        <th>
+            Distância
+        </th>
+    </thead>
+    <tbody>
+        <% results.results.forEach(content => { %>
+            <tr><td><%= content.obj.name %></td><td><%= content.dis.toFixed(3) %> KM</td></tr>
+        <%})%>
+    
+    </tbody>
+    
+    </table>
+    </div>    
+<script>
+    function initMap() {
+     const map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 16,
+            center: { lat: <%=lat%>, lng: <%=lng%> }
+        })
+    <% results.results.forEach(content => { %>
+        const initialLocation<%= content.obj._id %> = {lat: <%= content.obj.loc[0] %>, lng: <%= content.obj.loc[1] %>}
+           
+        var marker<%= content.obj._id %> = new google.maps.Marker({
+            position: initialLocation<%= content.obj._id %>,
+            map: map,
+        })
+    <% }) %>
+      
+  
+
+
+        
+
+    }
+</script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDu5EEY5Y7sDYPCV-MtJzgyd8StyX_E2VQ&callback=initMap">
+    </script>
+<% include ../elements/footer %>

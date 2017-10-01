@@ -1,0 +1,37 @@
+<% include ../elements/header %>
+
+    <div class="container">
+        <h2>Restaurantes</h2>
+        <p><a href="/restaurants/novo">Novo restaurante</a> | <a href="/restaurants/distancia">Ver distância</a></p>
+    <table class="table">
+    <thead>
+        <th>
+            Nome:
+        </th>
+    </thead>
+    <tbody>
+        <% if(restaurants.length > 0) {%>
+            <% restaurants.forEach(content => {%>
+                <tr>
+                    <td>
+                       <i class="ion-fork"></i> <%= content.name %>
+                    </td>
+                    <td>
+                        <a class="btn btn-outline" href="/restaurants/excluir/<%=content._id%>">Excluir</a>
+                    </td>
+                </tr>
+            <%})%>
+
+        <%} else {%> 
+            <div class="alert alert-danger col-sm-6 mx-auto">
+                Nenhum restaurante cadastrado
+            </div>
+        <%}%>   
+    </tbody>
+    
+    </table>
+    
+    </div>    
+
+
+<% include ../elements/footer %>

@@ -1,0 +1,71 @@
+<% include ../elements/header %>
+<style>
+    .color{
+        color: #29B2F6;
+        text-shadow: 2px 2px 2px gray;
+    }
+</style>
+    <div class="container">
+        <h2>Ver distância</h2>
+        <p><a href="/restaurants">Listar restaurantes</a></p>
+    <h3 class="text-center color">Escolha um local para calcular a distância até os restaurantes</h3>
+    <form method="get">
+        
+        <div id="map" style="height: 400px"></div>
+        <input type="hidden" name="lat" id="lat"/>
+        <input type="hidden" name="lng" id="lng"/>
+        
+    <button type="submit" class="btn btn-primary">ver distâncias</button>
+    </form>
+    
+    </div>    
+
+<% if(error404) { %>
+    <div class="alert alert-warning col-md-6 mx-auto">Nenhum restaurante cadastrado no sistema ainda</div>
+<%}%>
+
+<% if('errorFailed' in locals && errorFailed) { %>
+    <script>
+        alert('serviço indisponível! Tente novamente mais tarde')
+    </script>
+<%}%>
+
+
+
+<script>
+    function initMap() {
+        const initialLocation = {lat: -22.2301356, lng: -45.9364805}
+        const map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 16,
+            center: initialLocation
+        })
+        
+        var marker = new google.maps.Marker({
+            position: initialLocation,
+            map: map,
+            draggable: true
+        })
+
+
+
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+                marker.setPosition(latlng)
+                map.panTo(latlng)
+            })
+        }
+
+
+        
+
+        marker.addListener('dragend', function(){
+            document.getElementById('lat').value = marker.position.lat()
+            document.getElementById('lng').value = marker.position.lng()
+        })
+    }
+</script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDu5EEY5Y7sDYPCV-MtJzgyd8StyX_E2VQ&callback=initMap">
+    </script>
+<% include ../elements/footer %>
