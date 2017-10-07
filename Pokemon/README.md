@@ -1,3 +1,3 @@
 # Iniciar o app
-npm install
+npm install,
 npm start
