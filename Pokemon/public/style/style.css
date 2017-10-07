@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Pangolin');
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
+body {
+    background-image: url("../assets/images/PlanoFundo.jpg");
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed;
+}
+
+.navbar-opacity {
+    opacity: .9;
+    padding-left: 50px !important;
+}
+
+.myLink {
+    color: white !important;
+    padding: 5px 20px !important;
+}
+
+.myLink:hover {
+    background: white !important;
+    color: black !important;
+    border-radius: 10px !important;
+    transition: background .5s, color .5s !important;
+}
+
+.title {
+    margin-top: 40px;
+    width: 80%;
+    border-radius: 2px !important;
+}
+
+.myFont {
+    font-family: 'Pangolin', cursive !important;
+    font-size: 1.8em !important;
+}
+
+.color-white {
+    color: white !important;
+}
+
+.myFooter {
+    width: 100%;
+    color: white;
+    margin-top: 100px;
+}
+
+@media (max-width: 400px) {
+    .myLink:hover {
+        background: #343a40 !important;
+        opacity: .9 !important;
+        color: white !important;
+    }
+}
+
+.logo-pokemon:hover {
+    transform: scale(1.1);
+    transition: .2s;
+}
+
+.pokeball {
+    background-image: url('../assets/images/pokeball.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    float: left;
+    width: 20px;
+    height: 20px
+}
